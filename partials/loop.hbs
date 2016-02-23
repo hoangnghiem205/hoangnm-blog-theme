@@ -1,0 +1,34 @@
+{{! This is the post loop - each post will be output using this markup }}
+{{#foreach posts}}
+
+<article class="{{post_class}} hentry">
+            <footer class="entry-meta">
+                <span class="post-format"></span>
+                <span class="entry-date" title="{{date format='YYYY'}}"><span class="day">{{date format='DD'}}</span>{{date format='MMM'}}</span>
+                
+                <!-- <span class="entry-comment"><span class="count">3</span>comments</span> -->
+            </footer>
+            <!-- end .entry-meta -->  
+								
+            <header class="entry-header">
+                <h1 class="entry-title">
+                    <a rel="bookmark" href="{{url}}">{{{title}}}</a>
+                </h1>
+            </header>
+            <!-- end .entry-header -->
+								
+            <div class="featured-image">
+                <img width="400" height="300" src="{{image}}" alt="{{{title}}}" title="">
+            </div>
+            <!-- end .featured-image -->
+																		
+            <div class="entry-content clearfix">
+                <p>
+                    {{excerpt words="26"}} 
+                    <a class="more-link" href="{{url}}">Continue reading <span class="meta-nav">→</span></a>
+                </p>	
+            </div>
+            <!-- end .entry-content -->
+        </article>
+        <!-- end .post -->
+{{/foreach}}

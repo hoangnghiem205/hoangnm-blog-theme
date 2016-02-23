@@ -1,0 +1,107 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! Everything inside the #post tags pulls data from the post }}
+{{#post}}
+
+{{> "header"}}
+
+<div class="wrapper">
+    <div class="readable-content blog-single">
+        <article id="post-24" class="{{post_class}} hentry">
+            <header class="entry-header">
+                    <h1 class="entry-title">{{title}}</h1>
+            </header>
+            <!-- end .entry-header -->
+            
+            <div class="entry-meta">
+                <span class="posted-on">
+                    posted on										
+                    <a rel="bookmark" title="9:52 am" href="{{url}}"><time class="entry-date" datetime="{{date}}">{{date format='MMM DD, YYYY'}}</time></a>
+                </span>
+                <!-- end .posted-on -->
+                    {{! Everything inside the #author tags pulls data from the author }}
+                {{#author}}
+                <span class="posted-by">
+                    by										
+                    <a class="url fn n" rel="author" title="View all posts by {{name}}" href="{{url}}">{{name}}</a>
+                </span>
+                <!-- end .posted-by -->
+                {{/author}}	
+            </div>
+            <!-- end .entry-meta -->
+                                    
+            <div class="featured-image">
+                <img width="400" height="300" src="{{image}}" class="attachment-full wp-post-image" alt="{{title}}" title="">
+            </div>
+            <!-- end .featured-image -->																
+            <div class="entry-content clearfix">
+                {{content}}
+            </div>
+            <!-- end .entry-content -->
+                                    
+            <footer class="entry-meta post-tags">
+                <h3>TAGS</h3>		
+                {{#foreach tags}}
+                    <a href="{{url}}" rel="tag">{{name}}</a>
+                {{/foreach}}																		
+            </footer>
+            <!-- end .entry-meta -->
+        </article>
+        <!-- end .post -->
+				
+        {{! Everything inside the #author tags pulls data from the author }}
+        {{#author}}			
+        <aside class="about-author">
+	           <h3>WRITTEN BY</h3>
+                <div class="author-bio">
+                    {{#if image}}
+                    <div class="author-img">
+                        <a href="{{url}}">
+                            <img alt="JOHNNY DOE" src="{{image}}" class="avatar avatar-192 photo" height="192" width="192">			
+                        </a>
+                    </div>
+                    <!-- end .author-img -->
+                    {{/if}}
+                    <div class="author-info">
+                        <h4 class="author-name">{{name}}</h4>
+                        {{#if bio}}
+                            <p>{{bio}}</p>
+                        {{else}}
+                            <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+                        {{/if}}
+                    </div>
+                    <!-- end .author-info -->
+                </div>
+                <!-- end .author-bio -->
+        </aside>
+        <!-- end .about-author -->		
+        
+        {{/author}}					
+        <nav class="row nav-single">
+             
+             {{#prev_post}}
+             <div class="col-sm-6 nav-previous">
+                <h4>PREVIOUS POST</h4><a href="{{url}}" rel="prev"><span class="meta-nav">←</span> {{title}}</a>								
+            </div>
+            <!-- end .nav-previous -->
+            {{/prev_post}}
+            
+            {{#next_post}}
+            <div class="col-sm-6 nav-next">
+                <h4>NEXT POST</h4><a href="{{url}}" rel="next">{{title}} <span class="meta-nav">→</span></a>								
+            </div>
+            <!-- end .nav-next -->
+            {{/next_post}}
+            
+            
+            
+        </nav>
+        <!-- end .nav-single -->
+							
+    </div>
+    <!-- end .readable-content .blog-single --> 
+</div>
+{{/post}}
